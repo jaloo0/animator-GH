@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What If Zombies Hit Your Apartment?</title>
+<style>
+  :root { --bg: #11131b; --fg: #eee6d6; --dim: #8a8478; --acc: #f2b266; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); font: 13px/1.4 ui-monospace, Menlo, monospace; }
+  #wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px; }
+  canvas#out { max-height: calc(100vh - 110px); max-width: 96vw; background: #000; display: block; }
+  #bar { display: flex; gap: 10px; align-items: center; width: min(96vw, 1100px); }
+  #scrub { flex: 1; accent-color: var(--acc); }
+  button, select { background: #222533; color: var(--fg); border: 1px solid #3a3d4c; border-radius: 6px; padding: 5px 10px; font: inherit; }
+  #info { color: var(--dim); min-width: 280px; text-align: right; }
+  body.capture #bar, body.capture #help { display: none; }
+  body.capture #wrap { padding: 0; }
+  #help { color: var(--dim); }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="out" width="1920" height="1080"></canvas>
+  <div id="bar">
+    <button id="play">▶ play</button>
+    <input id="scrub" type="range" min="0" max="80" step="0.0417" value="0" />
+    <select id="jump"></select>
+    <span id="info">loading…</span>
+  </div>
+  <div id="help">space play/pause · ←/→ 1 frame · shift+←/→ 1 s · [ / ] prev/next shot · ?t=12.3 · ?shot=S05 · ?ar=9x16 for vertical</div>
+</div>
+<audio id="song" src="data/mix.wav" preload="auto"></audio>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

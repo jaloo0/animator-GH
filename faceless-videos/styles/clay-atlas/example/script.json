@@ -1,0 +1,24 @@
+{
+ "title": "The Louvre Heist",
+ "narrator": { "voice": "am_michael", "speed": 1.04 },
+ "lines": [
+  { "text": "October nineteenth, twenty twenty-five. Nine thirty in the morning.", "gap": 0.35 },
+  { "text": "The Louvre has been open for half an hour.", "gap": 0.6 },
+  { "text": "On the riverside, a truck parks below the Apollo Gallery.", "gap": 0.2 },
+  { "text": "On its back is a furniture lift.", "gap": 0.45 },
+  { "text": "Two men in yellow work vests ride it up to a balcony window.", "gap": 0.25 },
+  { "text": "They cut through the glass with disc cutters, and step inside.", "gap": 0.55 },
+  { "text": "This room holds the French crown jewels.", "gap": 0.5 },
+  { "text": "The men smash two display cases, and take eight pieces.", "gap": 0.3 },
+  { "text": "Necklaces, earrings, tiaras, brooches.", "gap": 0.25 },
+  { "text": "Worth an estimated eighty-eight million euros.", "gap": 0.6 },
+  { "text": "They are inside for about four minutes.", "gap": 0.3 },
+  { "text": "Then they ride back down, and escape on motorbikes.", "gap": 0.35 },
+  { "text": "In the rush, they drop one piece outside: the crown of Empress Eugénie.", "gap": 0.8 },
+  { "text": "Days later, an old security audit surfaced.", "gap": 0.25 },
+  { "text": "In twenty fourteen, the password to the museum's video surveillance server was...", "gap": 0.7 },
+  { "text": "Louvre.", "gap": 0.9 },
+  { "text": "Police arrested the first suspects within a week.", "gap": 0.3 },
+  { "text": "But a year later, the jewels are still missing.", "gap": 1.6 }
+ ]
+}

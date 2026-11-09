@@ -1,0 +1,12 @@
+{
+  "mode": "score",
+  "instrumental": true,
+  "caption": "Warm, curious, gently uplifting documentary underscore for a short history explainer, 92 BPM, major key. Soft pizzicato strings, warm felt piano, light wooden marimba, soft upright bass, gentle brushed shaker, airy warm string pad. Sunlit, earnest and tactile, a little whimsical, like a story about an inventor in a workshop and workers building a great bridge at golden hour. Steady pulse that sits under a spoken narrator, swells gently near the end and resolves on a warm major chord. Soft rounded high end, never harsh, never bright, no heavy drums, no cymbal crashes.",
+  "lyrics": "[Intro - soft pizzicato and felt piano]\n\n[Verse - marimba joins, upright bass, brushed shaker]\n\n[Verse - warm string pad, gentle build]\n\n[Chorus - fuller strings, hopeful, still soft]\n\n[Outro - resolves on a warm held chord]",
+  "bpm": 92,
+  "timesignature": 4,
+  "duration": 42,
+  "seeds": [11, 47, 89],
+  "fps": 30,
+  "lm": "acestep-5Hz-lm-0.6B"
+}

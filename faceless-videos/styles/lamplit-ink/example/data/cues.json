@@ -1,0 +1,255 @@
+[
+ {
+  "gain": 1,
+  "t": 0,
+  "type": "hum",
+  "end": 14.65,
+  "fadeFrom": 5.74,
+  "fadeTo": 12.677
+ },
+ {
+  "gain": 0.8,
+  "t": 5.69,
+  "type": "thump"
+ },
+ {
+  "gain": 0.35,
+  "t": 9.427,
+  "type": "knock",
+  "pitch": 1
+ },
+ {
+  "gain": 0.43,
+  "t": 10.047,
+  "type": "knock",
+  "pitch": 0.97
+ },
+ {
+  "gain": 0.51,
+  "t": 10.667,
+  "type": "knock",
+  "pitch": 0.94
+ },
+ {
+  "gain": 0.59,
+  "t": 11.287,
+  "type": "knock",
+  "pitch": 0.91
+ },
+ {
+  "gain": 0.6699999999999999,
+  "t": 11.907,
+  "type": "knock",
+  "pitch": 0.88
+ },
+ {
+  "gain": 0.75,
+  "t": 12.527,
+  "type": "knock",
+  "pitch": 0.85
+ },
+ {
+  "gain": 0.83,
+  "t": 13.147,
+  "type": "knock",
+  "pitch": 0.8200000000000001
+ },
+ {
+  "gain": 0.9,
+  "t": 14.65,
+  "type": "lampoff"
+ },
+ {
+  "gain": 1,
+  "t": 14.65,
+  "type": "wind",
+  "end": 178.962
+ },
+ {
+  "gain": 1,
+  "t": 16.157,
+  "type": "buzz"
+ },
+ {
+  "gain": 1,
+  "t": 16.757,
+  "type": "buzz"
+ },
+ {
+  "gain": 0.55,
+  "t": 19.505,
+  "type": "chime"
+ },
+ {
+  "gain": 0.5,
+  "t": 26.185,
+  "type": "lost"
+ },
+ {
+  "gain": 0.7,
+  "t": 28.442,
+  "type": "felt"
+ },
+ {
+  "gain": 1,
+  "t": 39.224,
+  "type": "water",
+  "end": 48.73,
+  "coughFrom": 48.04,
+  "fill": [
+   39.274,
+   44.507000000000005
+  ]
+ },
+ {
+  "gain": 0.55,
+  "t": 44.357,
+  "type": "clay",
+  "pitch": 1
+ },
+ {
+  "gain": 0.55,
+  "t": 44.487,
+  "type": "clay",
+  "pitch": 1.06
+ },
+ {
+  "gain": 0.55,
+  "t": 44.617,
+  "type": "clay",
+  "pitch": 1.12
+ },
+ {
+  "gain": 0.55,
+  "t": 44.747,
+  "type": "clay",
+  "pitch": 1.18
+ },
+ {
+  "gain": 0.32,
+  "t": 45.791,
+  "type": "clay",
+  "pitch": 1.9
+ },
+ {
+  "gain": 0.32,
+  "t": 45.861,
+  "type": "clay",
+  "pitch": 2.02
+ },
+ {
+  "gain": 0.32,
+  "t": 45.931,
+  "type": "clay",
+  "pitch": 2.1399999999999997
+ },
+ {
+  "gain": 0.32,
+  "t": 46.001,
+  "type": "clay",
+  "pitch": 1.9
+ },
+ {
+  "gain": 0.32,
+  "t": 46.071,
+  "type": "clay",
+  "pitch": 2.02
+ },
+ {
+  "gain": 0.32,
+  "t": 46.141,
+  "type": "clay",
+  "pitch": 2.1399999999999997
+ },
+ {
+  "gain": 0.32,
+  "t": 46.211,
+  "type": "clay",
+  "pitch": 1.9
+ },
+ {
+  "gain": 0.32,
+  "t": 46.281,
+  "type": "clay",
+  "pitch": 2.02
+ },
+ {
+  "gain": 0.32,
+  "t": 46.351,
+  "type": "clay",
+  "pitch": 2.1399999999999997
+ },
+ {
+  "gain": 0.5,
+  "t": 49.71,
+  "type": "drip"
+ },
+ {
+  "gain": 0.5,
+  "t": 50.61,
+  "type": "drip"
+ },
+ {
+  "gain": 0.7,
+  "t": 59.948,
+  "type": "felt"
+ },
+ {
+  "gain": 0.8,
+  "t": 71.23,
+  "type": "cloth"
+ },
+ {
+  "gain": 0.42,
+  "t": 71.78,
+  "type": "knock",
+  "pitch": 1.5
+ },
+ {
+  "gain": 0.42,
+  "t": 72.08,
+  "type": "knock",
+  "pitch": 1.5
+ },
+ {
+  "gain": 0.42,
+  "t": 72.38,
+  "type": "knock",
+  "pitch": 1.5
+ },
+ {
+  "gain": 0.6,
+  "t": 103.15,
+  "type": "swell"
+ },
+ {
+  "gain": 0.5,
+  "t": 118.235,
+  "type": "answer"
+ },
+ {
+  "gain": 0.5,
+  "t": 118.735,
+  "type": "answer"
+ },
+ {
+  "gain": 0.5,
+  "t": 119.235,
+  "type": "answer"
+ },
+ {
+  "gain": 0.7,
+  "t": 120.171,
+  "type": "felt"
+ },
+ {
+  "gain": 0.8,
+  "t": 172.703,
+  "type": "blow"
+ },
+ {
+  "gain": 0.6,
+  "t": 177.912,
+  "type": "creak"
+ }
+]

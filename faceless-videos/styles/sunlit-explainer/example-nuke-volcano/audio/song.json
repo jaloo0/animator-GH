@@ -1,0 +1,18 @@
+{
+  "mode": "score",
+  "instrumental": true,
+  "caption": "Tense, curious cinematic science-documentary underscore for a 30 second explainer short, 100 BPM, minor key. Low pulsing synth bass ostinato, soft staccato strings, deep muted piano notes, subtle ticking-free rhythmic pulse from low toms, slowly building tension, a dark swelling string and brass rise that breaks into one huge low cinematic impact and rumbling sub-bass near the end, then a held dark chord that decays. Sits under a calm spoken narrator. Warm, rounded high end, no harsh hats, no cymbals, no clicks, no vocals.",
+  "lyrics": "[Intro - low pulse, muted piano]\n\n[Verse - staccato strings join, curious]\n\n[Build - tension rises, low toms]\n\n[Drop - huge low impact, rumbling sub-bass, dark brass]\n\n[Outro - held dark chord decays]",
+  "bpm": 100,
+  "timesignature": 4,
+  "duration": 40,
+  "seeds": [
+    7,
+    23,
+    61
+  ],
+  "fps": 30,
+  "lm": "acestep-5Hz-lm-0.6B",
+  "chosen": "seed61 \u2014 its impact (28.8 s into the take) is lined up with the music_sync cue (the eruption)",
+  "impact": 28.8
+}

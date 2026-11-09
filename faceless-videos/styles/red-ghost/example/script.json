@@ -1,0 +1,67 @@
+{
+ "title": "The 2 A.M. Call",
+ "narrator": {
+  "voice": "am_michael",
+  "speed": 1.03
+ },
+ "phone": {
+  "voice": "am_onyx",
+  "speed": 0.82,
+  "gain": 0.75
+ },
+ "lines": [
+  {
+   "text": "In 1990, the Hale family left their daughter home alone for one night.",
+   "gap": 0.5
+  },
+  {
+   "text": "At 2 A.M., the hallway phone rang.",
+   "gap": 0.6
+  },
+  {
+   "text": "No voice.",
+   "gap": 0.25
+  },
+  {
+   "text": "Just breathing.",
+   "gap": 0.6
+  },
+  {
+   "text": "She hung up.",
+   "gap": 0.25
+  },
+  {
+   "text": "It rang again.",
+   "gap": 0.4
+  },
+  {
+   "v": "p",
+   "text": "Don't open the door.",
+   "gap": 0.1
+  },
+  {
+   "text": "a man whispered.",
+   "gap": 0.5
+  },
+  {
+   "text": "Then came three slow knocks.",
+   "gap": 1.5
+  },
+  {
+   "text": "She froze at the foot of the stairs, staring at the front door.",
+   "gap": 0.6
+  },
+  {
+   "text": "But the knocking wasn't coming from the front door.",
+   "gap": 0.35
+  },
+  {
+   "text": "It was coming from the closet,",
+   "gap": 0.3
+  },
+  {
+   "text": "behind her.",
+   "gap": 2.0
+  }
+ ]
+}

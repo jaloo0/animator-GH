@@ -1,0 +1,131 @@
+{
+ "duration": 63.615,
+ "sentences": [
+  {
+   "i": 0,
+   "v": "n",
+   "text": "October nineteenth, twenty twenty-five. Nine thirty in the morning.",
+   "start": 0.3,
+   "end": 4.552
+  },
+  {
+   "i": 1,
+   "v": "n",
+   "text": "The Louvre has been open for half an hour.",
+   "start": 4.902,
+   "end": 7.143
+  },
+  {
+   "i": 2,
+   "v": "n",
+   "text": "On the riverside, a truck parks below the Apollo Gallery.",
+   "start": 7.743,
+   "end": 11.28
+  },
+  {
+   "i": 3,
+   "v": "n",
+   "text": "On its back is a furniture lift.",
+   "start": 11.48,
+   "end": 13.424
+  },
+  {
+   "i": 4,
+   "v": "n",
+   "text": "Two men in yellow work vests ride it up to a balcony window.",
+   "start": 13.874,
+   "end": 17.748
+  },
+  {
+   "i": 5,
+   "v": "n",
+   "text": "They cut through the glass with disc cutters, and step inside.",
+   "start": 17.998,
+   "end": 21.45
+  },
+  {
+   "i": 6,
+   "v": "n",
+   "text": "This room holds the French crown jewels.",
+   "start": 22.0,
+   "end": 24.38
+  },
+  {
+   "i": 7,
+   "v": "n",
+   "text": "The men smash two display cases, and take eight pieces.",
+   "start": 24.88,
+   "end": 28.422
+  },
+  {
+   "i": 8,
+   "v": "n",
+   "text": "Necklaces, earrings, tiaras, brooches.",
+   "start": 28.722,
+   "end": 31.178
+  },
+  {
+   "i": 9,
+   "v": "n",
+   "text": "Worth an estimated eighty-eight million euros.",
+   "start": 31.428,
+   "end": 34.265
+  },
+  {
+   "i": 10,
+   "v": "n",
+   "text": "They are inside for about four minutes.",
+   "start": 34.865,
+   "end": 37.108
+  },
+  {
+   "i": 11,
+   "v": "n",
+   "text": "Then they ride back down, and escape on motorbikes.",
+   "start": 37.408,
+   "end": 40.633
+  },
+  {
+   "i": 12,
+   "v": "n",
+   "text": "In the rush, they drop one piece outside: the crown of Empress Eug\u00e9nie.",
+   "start": 40.983,
+   "end": 45.475
+  },
+  {
+   "i": 13,
+   "v": "n",
+   "text": "Days later, an old security audit surfaced.",
+   "start": 46.275,
+   "end": 49.174
+  },
+  {
+   "i": 14,
+   "v": "n",
+   "text": "In twenty fourteen, the password to the museum's video surveillance server was...",
+   "start": 49.424,
+   "end": 54.224
+  },
+  {
+   "i": 15,
+   "v": "n",
+   "text": "Louvre.",
+   "start": 54.924,
+   "end": 55.617
+  },
+  {
+   "i": 16,
+   "v": "n",
+   "text": "Police arrested the first suspects within a week.",
+   "start": 56.517,
+   "end": 59.184
+  },
+  {
+   "i": 17,
+   "v": "n",
+   "text": "But a year later, the jewels are still missing.",
+   "start": 59.484,
+   "end": 62.015
+  }
+ ]
+}

@@ -1,0 +1,504 @@
+{
+ "voice": "bm_george",
+ "speed": 1.0,
+ "duration": 178.602,
+ "sentences": [
+  {
+   "para": 0,
+   "i": 0,
+   "text": "You live on the fortieth floor.",
+   "start": 0.35,
+   "end": 2.433
+  },
+  {
+   "para": 1,
+   "i": 1,
+   "text": "At ten past nine, the city switches off.",
+   "start": 3.033,
+   "end": 5.955
+  },
+  {
+   "para": 1,
+   "i": 2,
+   "text": "Not your flat.",
+   "start": 6.195,
+   "end": 7.453
+  },
+  {
+   "para": 1,
+   "i": 3,
+   "text": "The whole city.",
+   "start": 7.693,
+   "end": 8.937
+  },
+  {
+   "para": 1,
+   "i": 4,
+   "text": "Block by block, like someone walking through a house, turning off the lamps.",
+   "start": 9.177,
+   "end": 13.653
+  },
+  {
+   "para": 2,
+   "i": 5,
+   "text": "Then yours.",
+   "start": 14.253,
+   "end": 15.307
+  },
+  {
+   "para": 3,
+   "i": 6,
+   "text": "Your phone gets one message before the network dies.",
+   "start": 15.907,
+   "end": 19.515
+  },
+  {
+   "para": 3,
+   "i": 7,
+   "text": "Grid failure.",
+   "start": 19.755,
+   "end": 20.907
+  },
+  {
+   "para": 3,
+   "i": 8,
+   "text": "Expect days, not hours.",
+   "start": 21.326,
+   "end": 23.424
+  },
+  {
+   "para": 3,
+   "i": 9,
+   "text": "Stay home.",
+   "start": 23.664,
+   "end": 24.761
+  },
+  {
+   "para": 3,
+   "i": 10,
+   "text": "Stay warm.",
+   "start": 25.181,
+   "end": 26.285
+  },
+  {
+   "para": 4,
+   "i": 11,
+   "text": "First problem.",
+   "start": 26.885,
+   "end": 28.042
+  },
+  {
+   "para": 4,
+   "i": 12,
+   "text": "Water.",
+   "start": 28.462,
+   "end": 29.289
+  },
+  {
+   "para": 5,
+   "i": 13,
+   "text": "City pressure only pushes water up about six floors.",
+   "start": 29.889,
+   "end": 33.826
+  },
+  {
+   "para": 5,
+   "i": 14,
+   "text": "Above that, electric pumps do the work.",
+   "start": 34.066,
+   "end": 36.618
+  },
+  {
+   "para": 5,
+   "i": 15,
+   "text": "You are on floor forty.",
+   "start": 36.858,
+   "end": 38.684
+  },
+  {
+   "para": 5,
+   "i": 16,
+   "text": "Whatever is left in the pipes is all you get.",
+   "start": 38.924,
+   "end": 41.986
+  },
+  {
+   "para": 6,
+   "i": 17,
+   "text": "So you fill the bath.",
+   "start": 42.586,
+   "end": 44.067
+  },
+  {
+   "para": 6,
+   "i": 18,
+   "text": "Every pot.",
+   "start": 44.307,
+   "end": 45.331
+  },
+  {
+   "para": 6,
+   "i": 19,
+   "text": "Every bottle.",
+   "start": 45.751,
+   "end": 46.87
+  },
+  {
+   "para": 6,
+   "i": 20,
+   "text": "Then the tap coughs, and stops.",
+   "start": 47.29,
+   "end": 49.516
+  },
+  {
+   "para": 7,
+   "i": 21,
+   "text": "A full bath is about forty gallons.",
+   "start": 50.116,
+   "end": 52.711
+  },
+  {
+   "para": 7,
+   "i": 22,
+   "text": "One person needs a gallon a day.",
+   "start": 52.951,
+   "end": 55.585
+  },
+  {
+   "para": 7,
+   "i": 23,
+   "text": "You just bought yourself a month.",
+   "start": 55.825,
+   "end": 57.762
+  },
+  {
+   "para": 8,
+   "i": 24,
+   "text": "Second problem.",
+   "start": 58.362,
+   "end": 59.548
+  },
+  {
+   "para": 8,
+   "i": 25,
+   "text": "Cold.",
+   "start": 59.968,
+   "end": 60.745
+  },
+  {
+   "para": 9,
+   "i": 26,
+   "text": "It is January.",
+   "start": 61.345,
+   "end": 62.727
+  },
+  {
+   "para": 9,
+   "i": 27,
+   "text": "By the second morning, it is eight degrees inside, and falling.",
+   "start": 62.967,
+   "end": 66.927
+  },
+  {
+   "para": 10,
+   "i": 28,
+   "text": "So you shrink your world.",
+   "start": 67.527,
+   "end": 69.33
+  },
+  {
+   "para": 10,
+   "i": 29,
+   "text": "You pick the smallest room, nail blankets over the door, and live in there.",
+   "start": 69.57,
+   "end": 74.136
+  },
+  {
+   "para": 11,
+   "i": 30,
+   "text": "One candle puts out about as much heat as an old light bulb.",
+   "start": 74.736,
+   "end": 78.755
+  },
+  {
+   "para": 11,
+   "i": 31,
+   "text": "It will not warm a room.",
+   "start": 78.995,
+   "end": 80.642
+  },
+  {
+   "para": 11,
+   "i": 32,
+   "text": "It will warm your hands.",
+   "start": 80.882,
+   "end": 82.736
+  },
+  {
+   "para": 12,
+   "i": 33,
+   "text": "Do not light the gas stove for heat.",
+   "start": 83.336,
+   "end": 85.808
+  },
+  {
+   "para": 12,
+   "i": 34,
+   "text": "Do not bring the barbecue inside.",
+   "start": 86.048,
+   "end": 88.339
+  },
+  {
+   "para": 12,
+   "i": 35,
+   "text": "Carbon monoxide has no smell, no colour, and it does its work while you sleep.",
+   "start": 88.579,
+   "end": 93.556
+  },
+  {
+   "para": 13,
+   "i": 36,
+   "text": "From up here, you can see the whole city.",
+   "start": 94.156,
+   "end": 96.712
+  },
+  {
+   "para": 13,
+   "i": 37,
+   "text": "None of it is lit.",
+   "start": 96.952,
+   "end": 98.449
+  },
+  {
+   "para": 14,
+   "i": 38,
+   "text": "Until night three.",
+   "start": 99.049,
+   "end": 100.411
+  },
+  {
+   "para": 14,
+   "i": 39,
+   "text": "Across the river, one window comes on.",
+   "start": 100.651,
+   "end": 103.364
+  },
+  {
+   "para": 14,
+   "i": 40,
+   "text": "Fortieth floor.",
+   "start": 103.604,
+   "end": 104.85
+  },
+  {
+   "para": 14,
+   "i": 41,
+   "text": "Same as you.",
+   "start": 105.27,
+   "end": 106.45
+  },
+  {
+   "para": 15,
+   "i": 42,
+   "text": "You hold your candle to the glass, and cover it with your hand.",
+   "start": 107.05,
+   "end": 110.761
+  },
+  {
+   "para": 15,
+   "i": 43,
+   "text": "Once.",
+   "start": 111.001,
+   "end": 111.725
+  },
+  {
+   "para": 15,
+   "i": 44,
+   "text": "Twice.",
+   "start": 112.145,
+   "end": 112.929
+  },
+  {
+   "para": 15,
+   "i": 45,
+   "text": "Three times.",
+   "start": 113.349,
+   "end": 114.515
+  },
+  {
+   "para": 16,
+   "i": 46,
+   "text": "Across the river, the light blinks back.",
+   "start": 115.115,
+   "end": 117.665
+  },
+  {
+   "para": 16,
+   "i": 47,
+   "text": "Three times.",
+   "start": 117.905,
+   "end": 119.071
+  },
+  {
+   "para": 17,
+   "i": 48,
+   "text": "Third problem.",
+   "start": 119.671,
+   "end": 120.804
+  },
+  {
+   "para": 17,
+   "i": 49,
+   "text": "In a dark city, a single candle can be seen from more than a mile away.",
+   "start": 121.224,
+   "end": 125.96
+  },
+  {
+   "para": 17,
+   "i": 50,
+   "text": "Everyone out there knows exactly which window is yours.",
+   "start": 126.2,
+   "end": 129.877
+  },
+  {
+   "para": 18,
+   "i": 51,
+   "text": "Night five.",
+   "start": 130.477,
+   "end": 131.556
+  },
+  {
+   "para": 18,
+   "i": 52,
+   "text": "Water, thirty-three gallons.",
+   "start": 131.976,
+   "end": 134.017
+  },
+  {
+   "para": 18,
+   "i": 53,
+   "text": "Candles, nine.",
+   "start": 134.257,
+   "end": 135.691
+  },
+  {
+   "para": 18,
+   "i": 54,
+   "text": "Phone, four percent, kept in an inside pocket, because cold eats batteries.",
+   "start": 136.111,
+   "end": 141.395
+  },
+  {
+   "para": 19,
+   "i": 55,
+   "text": "The light is not across the river anymore.",
+   "start": 141.995,
+   "end": 144.872
+  },
+  {
+   "para": 19,
+   "i": 56,
+   "text": "It is two streets away.",
+   "start": 145.112,
+   "end": 146.794
+  },
+  {
+   "para": 19,
+   "i": 57,
+   "text": "Fortieth floor.",
+   "start": 147.034,
+   "end": 148.28
+  },
+  {
+   "para": 20,
+   "i": 58,
+   "text": "Night seven.",
+   "start": 148.88,
+   "end": 149.932
+  },
+  {
+   "para": 20,
+   "i": 59,
+   "text": "It is in the building across the street.",
+   "start": 150.352,
+   "end": 152.79
+  },
+  {
+   "para": 20,
+   "i": 60,
+   "text": "You can see the room.",
+   "start": 153.03,
+   "end": 154.376
+  },
+  {
+   "para": 20,
+   "i": 61,
+   "text": "A lamp.",
+   "start": 154.616,
+   "end": 155.495
+  },
+  {
+   "para": 20,
+   "i": 62,
+   "text": "A sofa.",
+   "start": 155.915,
+   "end": 156.876
+  },
+  {
+   "para": 20,
+   "i": 63,
+   "text": "Someone standing at the window, holding a candle.",
+   "start": 157.296,
+   "end": 160.353
+  },
+  {
+   "para": 20,
+   "i": 64,
+   "text": "In a yellow beanie.",
+   "start": 160.593,
+   "end": 162.037
+  },
+  {
+   "para": 20,
+   "i": 65,
+   "text": "Like yours.",
+   "start": 162.277,
+   "end": 163.376
+  },
+  {
+   "para": 21,
+   "i": 66,
+   "text": "Night nine.",
+   "start": 163.976,
+   "end": 164.99
+  },
+  {
+   "para": 21,
+   "i": 67,
+   "text": "The building across the street is dark.",
+   "start": 165.41,
+   "end": 167.946
+  },
+  {
+   "para": 21,
+   "i": 68,
+   "text": "And under your front door, there is a thin line of warm light.",
+   "start": 168.186,
+   "end": 171.953
+  },
+  {
+   "para": 22,
+   "i": 69,
+   "text": "You blow out your candle.",
+   "start": 172.553,
+   "end": 174.34
+  },
+  {
+   "para": 23,
+   "i": 70,
+   "text": "The line under the door stays on.",
+   "start": 174.94,
+   "end": 177.362
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "duration": 29.832,
+ "sentences": [
+  {
+   "i": 0,
+   "v": "n",
+   "text": "This hard hat exists because of a war.",
+   "start": 0.3,
+   "end": 2.581
+  },
+  {
+   "i": 1,
+   "v": "n",
+   "text": "In World War One, soldiers wore steel helmets shaped like bowls.",
+   "start": 2.901,
+   "end": 7.09
+  },
+  {
+   "i": 2,
+   "v": "n",
+   "text": "When Edward Bullard came home, he noticed miners had nothing protecting their heads.",
+   "start": 7.39,
+   "end": 12.41
+  },
+  {
+   "i": 3,
+   "v": "n",
+   "text": "So in nineteen nineteen, in his father's shop, he steamed layers of canvas, glued them together, and painted them black.",
+   "start": 12.71,
+   "end": 19.953
+  },
+  {
+   "i": 4,
+   "v": "n",
+   "text": "He called it the Hard Boiled Hat.",
+   "start": 20.273,
+   "end": 22.134
+  },
+  {
+   "i": 5,
+   "v": "n",
+   "text": "And in nineteen thirty-three, the Golden Gate Bridge became America's first official Hard Hat Area.",
+   "start": 22.534,
+   "end": 28.732
+  }
+ ]
+}

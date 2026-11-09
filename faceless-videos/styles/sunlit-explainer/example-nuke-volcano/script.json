@@ -1,0 +1,45 @@
+{
+ "title": "What If You Nuked A Volcano?",
+ "narrator": {
+  "voice": "am_michael",
+  "speed": 1.1
+ },
+ "lines": [
+  {
+   "text": "If you dropped a nuke into a volcano, it wouldn't even sink.",
+   "gap": 0.28
+  },
+  {
+   "text": "Lava is almost three times denser than water, so the bomb would float.",
+   "gap": 0.3
+  },
+  {
+   "text": "At eleven hundred degrees, its wiring fries and its explosives burn unevenly.",
+   "gap": 0.26
+  },
+  {
+   "text": "And a nuke only works if they all fire at once.",
+   "gap": 0.3
+  },
+  {
+   "text": "So, no mushroom cloud. Just a radioactive mess.",
+   "gap": 0.34
+  },
+  {
+   "text": "But lower it miles down into the magma chamber, and the blast could crack the rock above.",
+   "gap": 0.3
+  },
+  {
+   "text": "If it erupts, that's not the bomb's power. It's the volcano's.",
+   "gap": 1.1
+  }
+ ],
+ "sources": {
+  "lava density 2.6-2.8 g/cm3 (basaltic melt) vs water 1.0": "USGS Volcano Hazards / standard petrology values",
+  "B83 bomb ~3.67 m x 0.46 m, ~1,100 kg -> ~1.8 g/cm3, less dense than lava": "public B83 specifications",
+  "basalt lava erupts ~1,100-1,200 C": "USGS HVO (Kilauea lava ~1,140-1,170 C)",
+  "implosion weapons need near-simultaneous detonation; fire/one-point initiation gives no nuclear yield, only dispersal (cf. Palomares 1966)": "nuclear weapon safety literature",
+  "magma chambers sit roughly 3-10 km below the surface": "USGS",
+  "volcano energy dwarfs bombs: Mount St. Helens 1980 ~24 Mt vs largest US bomb B83 1.2 Mt": "USGS Mount St. Helens fact sheet"
+ }
+}

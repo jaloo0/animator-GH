@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blackout — 40th Floor</title>
+<style>
+  :root { --bg: #14121a; --fg: #efe6d3; --dim: #8f8778; --acc: #f0b15a; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); font: 13px/1.4 ui-monospace, Menlo, monospace; }
+  #wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 12px; }
+  canvas#out { height: calc(100vh - 110px); aspect-ratio: 9 / 16; background: #000; display: block; }
+  #bar { display: flex; gap: 10px; align-items: center; width: min(96vw, 900px); }
+  #scrub { flex: 1; accent-color: var(--acc); }
+  button, select { background: #221f2a; color: var(--fg); border: 1px solid #3a3542; border-radius: 6px; padding: 5px 10px; font: inherit; }
+  #info { color: var(--dim); min-width: 280px; text-align: right; }
+  body.capture #bar, body.capture #help { display: none; }
+  #help { color: var(--dim); }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="out" width="1080" height="1920"></canvas>
+  <div id="bar">
+    <button id="play">▶ play</button>
+    <input id="scrub" type="range" min="0" max="180" step="0.0333" value="0" />
+    <select id="jump"></select>
+    <span id="info">loading…</span>
+  </div>
+  <div id="help">space play/pause · ←/→ 1 frame · shift+←/→ 1 s · [ / ] prev/next shot · ?t=12.3 or ?shot=S05</div>
+</div>
+<audio id="song" src="data/mix.wav" preload="auto"></audio>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

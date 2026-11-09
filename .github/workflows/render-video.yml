@@ -1,0 +1,157 @@
+name: Render faceless video
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_id:
+        description: Temporary project upload ID
+        required: true
+        type: string
+      style:
+        description: Video style selected in the dashboard
+        required: true
+        type: choice
+        options:
+          - lamplit-ink
+          - red-ghost
+          - sunlit-explainer
+          - stickman
+          - clay-atlas
+      aspect:
+        description: Output aspect ratio
+        required: true
+        type: choice
+        options:
+          - 9:16
+          - 16:9
+      quality:
+        description: Render profile
+        required: true
+        type: choice
+        options:
+          - draft
+          - full
+      gofile:
+        description: Upload the finished video to GoFile
+        required: true
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: faceless-video-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Validate job ID
+        env:
+          JOB_ID: ${{ inputs.job_id }}
+        run: |
+          if [[ ! "$JOB_ID" =~ ^[a-f0-9]{32}$ ]]; then
+            echo "Invalid job ID" >&2
+            exit 2
+          fi
+
+      - name: Check out render pipeline and uploaded project
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install system renderer dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          google-chrome --version
+          ffmpeg -version | head -n 1
+
+      - name: Cache local voice and timing models
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.faceless-videos
+            ~/.cache/huggingface/hub
+          key: faceless-videos-linux-v1-${{ hashFiles('faceless-videos/scripts/setup.sh', 'faceless-videos/scripts/voice.py', 'faceless-videos/scripts/words.py') }}
+
+      - name: Set up local voice, timing, and Python tools
+        run: bash faceless-videos/scripts/setup.sh
+
+      - name: Set up optional Clay Atlas depth model
+        if: ${{ inputs.style == 'clay-atlas' }}
+        run: bash faceless-videos/scripts/setup.sh --depth
+
+      - name: Extract and validate project
+        env:
+          JOB_ID: ${{ inputs.job_id }}
+        run: |
+          python dashboard/extract_project.py "video-jobs/${JOB_ID}.zip" "$RUNNER_TEMP/video-project"
+
+      - name: Run fixed render pipeline
+        env:
+          STYLE: ${{ inputs.style }}
+          ASPECT: ${{ inputs.aspect }}
+          QUALITY: ${{ inputs.quality }}
+        run: bash dashboard/run_pipeline.sh "$RUNNER_TEMP/video-project" "$STYLE" "$ASPECT" "$QUALITY"
+
+      - name: Upload video to GoFile
+        if: ${{ inputs.gofile }}
+        working-directory: ${{ runner.temp }}/video-project
+        run: |
+          if curl --fail --silent --show-error --retry 2 \
+            --connect-timeout 30 --max-time 1800 \
+            -F "file=@renders/video.mp4;type=video/mp4" \
+            https://upload.gofile.io/uploadfile > renders/gofile-response.json; then
+            python - <<'PY'
+          import json
+          from pathlib import Path
+
+          try:
+              response = json.loads(Path("renders/gofile-response.json").read_text())
+              data = response.get("data") if isinstance(response, dict) else None
+              link = data.get("downloadPage") if isinstance(data, dict) else None
+              if (
+                  not isinstance(response, dict)
+                  or response.get("status") != "ok"
+                  or not isinstance(link, str)
+                  or not link.startswith("https://gofile.io/")
+              ):
+                  raise ValueError("GoFile returned no valid share link")
+              Path("renders/gofile-link.txt").write_text(link + "\n")
+              print(f"GoFile link: {link}")
+          except (OSError, ValueError, json.JSONDecodeError) as error:
+              Path("renders/gofile-link.txt").write_text(f"GoFile upload failed: {error}\n")
+              print(f"GoFile upload failed: {error}")
+          PY
+          else
+            printf 'GoFile upload failed; download the MP4 artifact from the dashboard.\n' > renders/gofile-link.txt
+            echo "GoFile upload failed; the video artifact will still be available."
+          fi
+
+      - name: Prepare artifact
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/video-output"
+          if [[ -f "$RUNNER_TEMP/video-project/renders/video.mp4" ]]; then
+            cp "$RUNNER_TEMP/video-project/renders/video.mp4" "$RUNNER_TEMP/video-output/video.mp4"
+          fi
+          if [[ -f "$RUNNER_TEMP/video-project/renders/gofile-link.txt" ]]; then
+            cp "$RUNNER_TEMP/video-project/renders/gofile-link.txt" "$RUNNER_TEMP/video-output/gofile-link.txt"
+          fi
+
+      - name: Save rendered video
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-video
+          path: ${{ runner.temp }}/video-output/
+          if-no-files-found: warn
+          retention-days: 7

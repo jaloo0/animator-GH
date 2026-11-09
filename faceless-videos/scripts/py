@@ -1,0 +1,6 @@
+#!/bin/sh
+# Runs Python from the skill's private env (~/.faceless-videos/venv, made by setup.sh).
+V="${FACELESS_HOME:-$HOME/.faceless-videos}/venv"
+if [ -x "$V/bin/python" ]; then exec "$V/bin/python" -I "$@"; fi
+if [ -x "$V/Scripts/python.exe" ]; then exec "$V/Scripts/python.exe" -I "$@"; fi
+echo "The faceless-videos Python env is missing: run  bash $(cd "$(dirname "$0")" && pwd)/setup.sh" >&2; exit 1

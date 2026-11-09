@@ -1,0 +1,26 @@
+{
+ "title": "Too Tall",
+ "narrator": { "voice": "am_michael", "speed": 1.06 },
+ "lines": [
+  { "text": "In nineteen ninety-four, a store camera photographed a killer.", "gap": 0.3 },
+  { "text": "Police let their suspect go.", "gap": 0.25 },
+  { "text": "The man on the tape looked too tall.", "gap": 0.9 },
+  { "text": "April fourth, around midnight.", "gap": 0.25 },
+  { "text": "Two clerks are closing a Blockbuster Video in Dallas.", "gap": 0.25 },
+  { "text": "Brad Lindsey, twenty. James Armstrong, twenty-six.", "gap": 0.45 },
+  { "text": "An eighteen-year-old walks in with a pistol,", "gap": 0.12 },
+  { "text": "and marches them to the safe in the back office.", "gap": 0.35 },
+  { "text": "It's on a time lock. Nothing will open it tonight.", "gap": 0.5 },
+  { "text": "James runs for the door.", "gap": 0.2 },
+  { "text": "He doesn't make it.", "gap": 1.0 },
+  { "text": "Then the gunman turns to Brad, the only witness.", "gap": 1.0 },
+  { "text": "He leaves with three hundred and ninety-two dollars.", "gap": 0.6 },
+  { "text": "Weeks later, a tip leads police to Leon Dorsey.", "gap": 0.25 },
+  { "text": "But the man in the photos seems taller. They let him go.", "gap": 0.5 },
+  { "text": "Five months later, he kills again, and this time he's caught.", "gap": 0.6 },
+  { "text": "In nineteen ninety-eight, the FBI measures the old tapes.", "gap": 0.3 },
+  { "text": "The man in the doorway is Leon Dorsey's height.", "gap": 0.8 },
+  { "text": "In two thousand eight, Texas executes him.", "gap": 0.45 },
+  { "text": "Brad and James's parents watch through the glass.", "gap": 1.6 }
+ ]
+}

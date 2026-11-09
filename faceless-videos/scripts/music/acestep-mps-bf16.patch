@@ -1,0 +1,15 @@
+diff --git a/acestep/core/generation/handler/init_service_orchestrator.py b/acestep/core/generation/handler/init_service_orchestrator.py
+index 4b03224..de231bd 100644
+--- a/acestep/core/generation/handler/init_service_orchestrator.py
++++ b/acestep/core/generation/handler/init_service_orchestrator.py
+@@ -98,7 +98,9 @@ class InitServiceOrchestratorMixin:
+                         "using float16 instead of bfloat16."
+                     )
+             else:
+-                self.dtype = torch.bfloat16 if resolved_device == "xpu" else torch.float32
++                # local patch: ACESTEP_MPS_DTYPE=bfloat16 halves DiT memory on 16 GB Macs
++                mps_half = resolved_device == "mps" and os.environ.get("ACESTEP_MPS_DTYPE", "").lower() == "bfloat16"
++                self.dtype = torch.bfloat16 if resolved_device == "xpu" or mps_half else torch.float32
+             self.quantization = normalized_quantization
+             try:
+                 self._validate_quantization_setup(

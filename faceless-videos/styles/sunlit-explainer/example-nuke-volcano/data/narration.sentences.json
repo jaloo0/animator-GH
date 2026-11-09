@@ -1,0 +1,54 @@
+{
+ "duration": 30.777,
+ "sentences": [
+  {
+   "i": 0,
+   "v": "n",
+   "text": "If you dropped a nuke into a volcano, it wouldn't even sink.",
+   "start": 0.3,
+   "end": 3.747
+  },
+  {
+   "i": 1,
+   "v": "n",
+   "text": "Lava is almost three times denser than water, so the bomb would float.",
+   "start": 4.027,
+   "end": 8.166
+  },
+  {
+   "i": 2,
+   "v": "n",
+   "text": "At eleven hundred degrees, its wiring fries and its explosives burn unevenly.",
+   "start": 8.466,
+   "end": 13.515
+  },
+  {
+   "i": 3,
+   "v": "n",
+   "text": "And a nuke only works if they all fire at once.",
+   "start": 13.775,
+   "end": 16.369
+  },
+  {
+   "i": 4,
+   "v": "n",
+   "text": "So, no mushroom cloud. Just a radioactive mess.",
+   "start": 16.669,
+   "end": 20.133
+  },
+  {
+   "i": 5,
+   "v": "n",
+   "text": "But lower it miles down into the magma chamber, and the blast could crack the rock above.",
+   "start": 20.473,
+   "end": 25.678
+  },
+  {
+   "i": 6,
+   "v": "n",
+   "text": "If it erupts, that's not the bomb's power. It's the volcano's.",
+   "start": 25.978,
+   "end": 29.677
+  }
+ ]
+}

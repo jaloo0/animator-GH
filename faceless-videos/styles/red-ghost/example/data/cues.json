@@ -1,0 +1,89 @@
+[
+ {
+  "gain": 1,
+  "t": 5.927,
+  "type": "ring",
+  "dur": 2
+ },
+ {
+  "gain": 1,
+  "t": 8.546,
+  "type": "pickup"
+ },
+ {
+  "gain": 1,
+  "t": 8.596,
+  "type": "line",
+  "dur": 3.508000000000001
+ },
+ {
+  "gain": 1,
+  "t": 11.018,
+  "type": "breath",
+  "dur": 0.7360000000000007
+ },
+ {
+  "gain": 1,
+  "t": 12.224,
+  "type": "hangup"
+ },
+ {
+  "gain": 1,
+  "t": 12.77,
+  "type": "ring",
+  "dur": 1.274000000000001
+ },
+ {
+  "gain": 1,
+  "t": 14.044,
+  "type": "pickup"
+ },
+ {
+  "gain": 1,
+  "t": 14.044,
+  "type": "line",
+  "dur": 3.073999999999998
+ },
+ {
+  "gain": 1,
+  "t": 19.258,
+  "type": "knock"
+ },
+ {
+  "gain": 1.05,
+  "t": 19.778,
+  "type": "knock"
+ },
+ {
+  "gain": 1.1,
+  "t": 20.298,
+  "type": "knock"
+ },
+ {
+  "gain": 1,
+  "t": 20.658,
+  "type": "swell",
+  "dur": 4
+ },
+ {
+  "gain": 1,
+  "t": 27.468,
+  "type": "closetknock"
+ },
+ {
+  "gain": 1,
+  "t": 27.848,
+  "type": "creak",
+  "dur": 1.9520000000000017
+ },
+ {
+  "gain": 1,
+  "t": 29.3,
+  "type": "sting"
+ },
+ {
+  "gain": 1,
+  "t": 32.678,
+  "type": "lastknock"
+ }
+]

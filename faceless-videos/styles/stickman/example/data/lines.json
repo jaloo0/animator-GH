@@ -1,0 +1,215 @@
+{
+ "duration": 71.175,
+ "lines": [
+  {
+   "i": 0,
+   "who": "narrator",
+   "text": "It starts with a sound in the hallway.",
+   "start": 0.45,
+   "end": 2.551
+  },
+  {
+   "i": 1,
+   "who": "narrator",
+   "text": "Someone is pounding on your neighbor's door.",
+   "start": 2.871,
+   "end": 5.17
+  },
+  {
+   "i": 2,
+   "who": "narrator",
+   "text": "Then the pounding stops.",
+   "start": 5.49,
+   "end": 6.981
+  },
+  {
+   "i": 3,
+   "who": "narrator",
+   "text": "And the screaming starts.",
+   "start": 7.301,
+   "end": 8.661
+  },
+  {
+   "i": 4,
+   "who": "beat",
+   "text": "",
+   "start": 8.981,
+   "end": 10.981
+  },
+  {
+   "i": 5,
+   "who": "narrator",
+   "text": "You have one hour. Here's what you do first.",
+   "start": 10.981,
+   "end": 13.869
+  },
+  {
+   "i": 6,
+   "who": "narrator",
+   "text": "One.",
+   "start": 14.619,
+   "end": 15.19
+  },
+  {
+   "i": 7,
+   "who": "narrator",
+   "text": "Lock the door, and push the couch against it.",
+   "start": 15.69,
+   "end": 18.206
+  },
+  {
+   "i": 8,
+   "who": "narrator",
+   "text": "Locks stop people. Weight stops crowds.",
+   "start": 18.526,
+   "end": 21.466
+  },
+  {
+   "i": 9,
+   "who": "narrator",
+   "text": "Two.",
+   "start": 22.216,
+   "end": 22.786
+  },
+  {
+   "i": 10,
+   "who": "narrator",
+   "text": "Fill the bathtub.",
+   "start": 23.286,
+   "end": 24.45
+  },
+  {
+   "i": 11,
+   "who": "narrator",
+   "text": "When the power dies, the water pumps die with it.",
+   "start": 24.77,
+   "end": 27.708
+  },
+  {
+   "i": 12,
+   "who": "narrator",
+   "text": "A full tub holds about a hundred and fifty liters.",
+   "start": 28.028,
+   "end": 31.085
+  },
+  {
+   "i": 13,
+   "who": "narrator",
+   "text": "Boil it, and that's a month of drinking water.",
+   "start": 31.405,
+   "end": 34.005
+  },
+  {
+   "i": 14,
+   "who": "narrator",
+   "text": "Three.",
+   "start": 34.755,
+   "end": 35.393
+  },
+  {
+   "i": 15,
+   "who": "narrator",
+   "text": "Kill the lights, and cover the windows.",
+   "start": 35.893,
+   "end": 38.047
+  },
+  {
+   "i": 16,
+   "who": "narrator",
+   "text": "At night, one glowing window tells the whole street.",
+   "start": 38.367,
+   "end": 41.416
+  },
+  {
+   "i": 17,
+   "who": "narrator",
+   "text": "Food here.",
+   "start": 41.736,
+   "end": 42.582
+  },
+  {
+   "i": 18,
+   "who": "narrator",
+   "text": "Four.",
+   "start": 43.512,
+   "end": 44.164
+  },
+  {
+   "i": 19,
+   "who": "narrator",
+   "text": "Charge everything. Phone, power bank, flashlight.",
+   "start": 44.664,
+   "end": 47.881
+  },
+  {
+   "i": 20,
+   "who": "narrator",
+   "text": "The grid is next.",
+   "start": 48.201,
+   "end": 49.402
+  },
+  {
+   "i": 21,
+   "who": "narrator",
+   "text": "Five.",
+   "start": 50.152,
+   "end": 50.87
+  },
+  {
+   "i": 22,
+   "who": "narrator",
+   "text": "Eat the fridge first.",
+   "start": 51.37,
+   "end": 52.673
+  },
+  {
+   "i": 23,
+   "who": "narrator",
+   "text": "Without power, it stays cold for about four hours.",
+   "start": 52.993,
+   "end": 56.419
+  },
+  {
+   "i": 24,
+   "who": "narrator",
+   "text": "The cans can wait.",
+   "start": 56.739,
+   "end": 58.034
+  },
+  {
+   "i": 25,
+   "who": "narrator",
+   "text": "By midnight, the hallway is quiet.",
+   "start": 58.784,
+   "end": 60.72
+  },
+  {
+   "i": 26,
+   "who": "narrator",
+   "text": "Then your phone lights up. It's your neighbor.",
+   "start": 61.04,
+   "end": 63.69
+  },
+  {
+   "i": 27,
+   "who": "Neighbor",
+   "text": "Let me in. I'm not bitten.",
+   "start": 64.01,
+   "end": 66.439
+  },
+  {
+   "i": 28,
+   "who": "beat",
+   "text": "",
+   "start": 66.759,
+   "end": 67.759
+  },
+  {
+   "i": 29,
+   "who": "narrator",
+   "text": "Would you open the door?",
+   "start": 67.759,
+   "end": 69.255
+  }
+ ]
+}

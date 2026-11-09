@@ -1,0 +1,12 @@
+{
+  "mode": "score",
+  "instrumental": true,
+  "caption": "Quiet, wistful, slightly eerie ambient lo-fi instrumental for a late-night story, 68 BPM, minor key. Soft felt piano playing sparse, gentle, lonely notes with long sustain, warm analog pad, very soft low cello drone, distant music box, faint warm tape hiss and vinyl crackle. No drums, no percussion, no cymbals, no bass drops. Intimate and cold, a candlelit apartment high above a dark city in winter, tender but uneasy. Calm and steady from start to finish, no build-up and no climax, it sits quietly under a spoken narrator. Soft rounded high end, never harsh, never bright.",
+  "lyrics": "[Intro - soft felt piano, warm pad]\n\n[Verse - sparse lonely piano, low cello drone]\n\n[Verse - music box melody joins, very quiet]\n\n[Bridge - pad swells gently, uneasy]\n\n[Verse - sparse piano, cello drone]\n\n[Outro - piano fades to a single held note]",
+  "bpm": 68,
+  "timesignature": 4,
+  "duration": 190,
+  "seeds": [11, 47],
+  "fps": 30,
+  "lm": "acestep-5Hz-lm-0.6B"
+}

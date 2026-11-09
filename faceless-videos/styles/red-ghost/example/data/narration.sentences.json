@@ -1,0 +1,96 @@
+{
+ "duration": 32.278,
+ "sentences": [
+  {
+   "i": 0,
+   "v": "n",
+   "text": "In 1990, the Hale family left their daughter home alone for one night.",
+   "start": 0.3,
+   "end": 5.377
+  },
+  {
+   "i": 1,
+   "v": "n",
+   "text": "At 2 A.M., the hallway phone rang.",
+   "start": 5.877,
+   "end": 8.346
+  },
+  {
+   "i": 2,
+   "v": "n",
+   "text": "No voice.",
+   "start": 8.946,
+   "end": 9.818
+  },
+  {
+   "i": 3,
+   "v": "n",
+   "text": "Just breathing.",
+   "start": 10.068,
+   "end": 11.054
+  },
+  {
+   "i": 4,
+   "v": "n",
+   "text": "She hung up.",
+   "start": 11.654,
+   "end": 12.5
+  },
+  {
+   "i": 5,
+   "v": "n",
+   "text": "It rang again.",
+   "start": 12.75,
+   "end": 13.764
+  },
+  {
+   "i": 6,
+   "v": "p",
+   "text": "Don't open the door.",
+   "start": 14.164,
+   "end": 15.738
+  },
+  {
+   "i": 7,
+   "v": "n",
+   "text": "a man whispered.",
+   "start": 15.838,
+   "end": 16.868
+  },
+  {
+   "i": 8,
+   "v": "n",
+   "text": "Then came three slow knocks.",
+   "start": 17.368,
+   "end": 19.078
+  },
+  {
+   "i": 9,
+   "v": "n",
+   "text": "She froze at the foot of the stairs, staring at the front door.",
+   "start": 20.578,
+   "end": 24.084
+  },
+  {
+   "i": 10,
+   "v": "n",
+   "text": "But the knocking wasn't coming from the front door.",
+   "start": 24.684,
+   "end": 27.198
+  },
+  {
+   "i": 11,
+   "v": "n",
+   "text": "It was coming from the closet,",
+   "start": 27.548,
+   "end": 29.08
+  },
+  {
+   "i": 12,
+   "v": "n",
+   "text": "behind her.",
+   "start": 29.38,
+   "end": 30.278
+  }
+ ]
+}

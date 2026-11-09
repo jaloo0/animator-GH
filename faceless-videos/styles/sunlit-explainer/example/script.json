@@ -1,0 +1,13 @@
+{
+ "title": "Hard Boiled",
+ "narrator": { "voice": "am_michael", "speed": 1.06 },
+ "phone": { "voice": "am_onyx", "speed": 1.0, "gain": 0.8 },
+ "lines": [
+  { "text": "This hard hat exists because of a war.", "gap": 0.32 },
+  { "text": "In World War One, soldiers wore steel helmets shaped like bowls.", "gap": 0.3 },
+  { "text": "When Edward Bullard came home, he noticed miners had nothing protecting their heads.", "gap": 0.3 },
+  { "text": "So in nineteen nineteen, in his father's shop, he steamed layers of canvas, glued them together, and painted them black.", "gap": 0.32 },
+  { "text": "He called it the Hard Boiled Hat.", "gap": 0.4 },
+  { "text": "And in nineteen thirty-three, the Golden Gate Bridge became America's first official Hard Hat Area.", "gap": 1.1 }
+ ]
+}

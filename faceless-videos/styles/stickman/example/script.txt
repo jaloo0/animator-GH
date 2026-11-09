@@ -1,0 +1,38 @@
+# WHAT IF ZOMBIES HIT YOUR APARTMENT? — narrator: Kokoro am_michael. One line = one clause block.
+# [beat 1.6] = real silence. [Neighbor] line = spoken in the Neighbor's own voice (see voices in tools/voice.py).
+It starts with a sound in the hallway.
+Someone is pounding on your neighbor's door.
+Then the pounding stops.
+And the screaming starts.
+[beat 2.0]
+You have one hour. Here's what you do first.
+
+One.
+Lock the door, and push the couch against it.
+Locks stop people. Weight stops crowds.
+
+Two.
+Fill the bathtub.
+When the power dies, the water pumps die with it.
+A full tub holds about a hundred and fifty liters.
+Boil it, and that's a month of drinking water.
+
+Three.
+Kill the lights, and cover the windows.
+At night, one glowing window tells the whole street.
+Food here.
+
+Four.
+Charge everything. Phone, power bank, flashlight.
+The grid is next.
+
+Five.
+Eat the fridge first.
+Without power, it stays cold for about four hours.
+The cans can wait.
+
+By midnight, the hallway is quiet.
+Then your phone lights up. It's your neighbor.
+[Neighbor] Let me in. I'm not bitten.
+[beat 1.0]
+Would you open the door?
