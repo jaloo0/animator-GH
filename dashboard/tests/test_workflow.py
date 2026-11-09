@@ -47,20 +47,24 @@ class OpenCodeConfigTests(unittest.TestCase):
         config_path = Path(__file__).resolve().parents[1] / "opencode_config.json"
         config = json.loads(config_path.read_text(encoding="utf-8"))
         self.assertEqual(config["default_agent"], "video-creator")
+        agent = config["agents"]["video-creator"]
+        self.assertIn("prompt", agent)
+        self.assertNotIn("system", agent)
         for rule_set in (
-            config["permissions"],
-            config["agents"]["video-creator"]["permissions"],
+            config["permission"],
+            agent["permission"],
         ):
-            self.assertIn(
-                {"action": "*", "resource": "*", "effect": "deny"},
-                rule_set,
+            self.assertEqual(rule_set["*"], "deny")
+            self.assertEqual(rule_set["read"]["*"], "allow")
+            self.assertEqual(
+                rule_set["read"]["{env:GITHUB_WORKSPACE}/faceless-videos/**"],
+                "allow",
             )
-            allowed = {
-                rule["action"]
-                for rule in rule_set
-                if rule["effect"] == "allow"
-            }
-            self.assertTrue(allowed.isdisjoint({"shell", "webfetch", "websearch", "subagent"}))
+            self.assertEqual(rule_set["glob"]["*"], "allow")
+            self.assertEqual(rule_set["edit"]["*"], "allow")
+            self.assertEqual(rule_set["edit"]["video-request.json"], "deny")
+        self.assertNotIn("permissions", config)
+        self.assertNotIn("permissions", agent)
 
 
 class WorkflowDispatchConfigTests(unittest.TestCase):
