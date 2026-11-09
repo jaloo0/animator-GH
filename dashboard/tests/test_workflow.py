@@ -92,16 +92,44 @@ class GitHubDispatchTests(unittest.TestCase):
         )
         self.assertEqual(uploaded, {"source_type": "Story/script", "source_text": "A short story"})
 
-    def test_refuses_to_submit_to_public_repository(self):
+    def test_requires_acknowledgement_for_public_repository(self):
         client = GitHubClient("owner", "public-repo", "token")
         repository = Mock()
         repository.json.return_value = {"visibility": "public", "default_branch": "main"}
         with patch.object(client, "_request", return_value=repository) as request:
-            with self.assertRaises(GitHubAPIError):
+            with self.assertRaisesRegex(GitHubAPIError, "This render repository is public"):
                 client.start_render(
                     "A story", "Story/script", "a" * 32, "stickman", "9:16", "draft", False
                 )
         request.assert_called_once()
+
+    def test_dispatches_to_public_repository_after_acknowledgement(self):
+        client = GitHubClient("owner", "public-repo", "token")
+        repository = Mock()
+        repository.json.return_value = {"visibility": "public", "default_branch": "main"}
+        workflow = Mock()
+        workflow.json.return_value = {"state": "active"}
+        reference = Mock()
+        reference.json.return_value = {"object": {"sha": "abc123"}}
+        with patch.object(
+            client,
+            "_request",
+            side_effect=[repository, workflow, reference, Mock(), Mock(), Mock()],
+        ) as request:
+            branch = client.start_render(
+                "A short story",
+                "Story/script",
+                "e" * 32,
+                "stickman",
+                "9:16",
+                "draft",
+                False,
+                public_content_acknowledged=True,
+            )
+        self.assertEqual(branch, "video-" + "e" * 32)
+        self.assertEqual(request.call_count, 6)
+        self.assertEqual(request.call_args_list[-1].args[0], "POST")
+        self.assertTrue(request.call_args_list[-1].args[1].endswith("/dispatches"))
 
     def test_removes_temporary_branch_if_upload_or_dispatch_fails(self):
         client = GitHubClient("owner", "private-repo", "token")

@@ -62,7 +62,7 @@ class GitHubClient:
         if path == "":
             return (
                 "Check github.owner and github.repo in Streamlit secrets, and confirm the fine-grained "
-                "token is active and has access to this private repository."
+                "token is active and has access to this repository."
             )
         if path.startswith("/actions/workflows/"):
             return (
@@ -72,7 +72,7 @@ class GitHubClient:
         if path.startswith("/git/ref/heads/"):
             return "The configured repository default branch could not be found."
         if path == "/git/refs":
-            return "The token must have Contents read/write permission on this private repository."
+            return "The token must have Contents read/write permission on this repository."
         if path.startswith("/contents/"):
             return "Confirm the temporary branch exists and the token has Contents read/write permission."
         if path.startswith("/git/refs/heads/"):
@@ -91,6 +91,7 @@ class GitHubClient:
         aspect: str,
         quality: str,
         gofile: bool,
+        public_content_acknowledged: bool = False,
     ) -> str:
         if not re.fullmatch(r"[a-f0-9]{32}", job_id):
             raise GitHubAPIError("Invalid job identifier.")
@@ -109,9 +110,13 @@ class GitHubClient:
             raise GitHubAPIError("Ideas and stories must be 16 KB or smaller.")
         branch = f"video-{job_id}"
         repository = self.repository()
-        if repository.get("visibility") != "private":
+        visibility = repository.get("visibility")
+        if visibility not in {"public", "private"}:
+            raise GitHubAPIError("Could not determine whether the render repository is public or private.")
+        if visibility == "public" and not public_content_acknowledged:
             raise GitHubAPIError(
-                "The render repository must be private. Submitted ideas and stories are stored there temporarily."
+                "This render repository is public. Confirm that you accept public access to submitted ideas/stories, "
+                "generated project artifacts, and rendered video artifacts before continuing."
             )
         default_branch = repository.get("default_branch")
         if not default_branch:

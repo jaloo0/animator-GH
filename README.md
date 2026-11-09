@@ -12,5 +12,7 @@ and optional GoFile delivery. No local terminal or project ZIP is required for t
 The original skill scripts and examples remain available. The dashboard path is additive; running the skill manually
 continues to work as before.
 
-Setup requires the private repository to store an `OPENROUTER_API_KEY` GitHub Actions secret and Streamlit secrets
-for dashboard access and the GitHub API. The optional GoFile step makes a temporary public share link for the finished MP4.
+Setup requires the configured GitHub repository to store an `OPENROUTER_API_KEY` GitHub Actions secret and Streamlit
+secrets for dashboard access and the GitHub API. Public repositories require explicit acknowledgement before
+submission because requests, workflow logs, and artifacts may be publicly accessible. The optional GoFile step makes
+a temporary public share link for the finished MP4.

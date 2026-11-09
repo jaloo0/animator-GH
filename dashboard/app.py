@@ -69,7 +69,10 @@ def cleanup_job_branch(client: GitHubClient, branch: str) -> None:
     st.session_state.pop("video_run_id", None)
     st.session_state.pop("video_bytes", None)
     st.session_state.pop("gofile_link", None)
-    st.success("Temporary request branch deleted.")
+    st.success(
+        "Temporary request branch deleted. If the repository is public, this does not guarantee that its "
+        "commits, workflow logs, or artifacts are no longer accessible."
+    )
     st.rerun()
 
 
@@ -179,6 +182,12 @@ with st.form("video_request"):
         value=False,
         help="This explicitly sends the finished video to GoFile. Anyone with its link may access it.",
     )
+    public_content_acknowledged = st.checkbox(
+        "I understand that if this repository is public, my idea/story, generated project, and video may be "
+        "publicly accessible. Deleting the temporary branch may not remove all copies.",
+        value=False,
+        help="Public repositories can expose branches, workflow logs, and Actions artifacts to anyone.",
+    )
     submitted = st.form_submit_button("Create and render video", type="primary")
 
 if submitted:
@@ -199,6 +208,7 @@ if submitted:
                     aspect=aspect,
                     quality=quality,
                     gofile=gofile,
+                    public_content_acknowledged=public_content_acknowledged,
                 )
                 started = True
         except GitHubAPIError as exc:
