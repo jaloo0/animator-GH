@@ -44,9 +44,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  render:
+  creative:
     runs-on: ubuntu-24.04
-    timeout-minutes: 360
+    timeout-minutes: 30
     steps:
       - name: Validate job ID
         env:
@@ -57,9 +57,79 @@ jobs:
             exit 2
           fi
 
-      - name: Check out render pipeline and uploaded project
+      - name: Check out render pipeline and request
         uses: actions/checkout@v4
         with:
+          ref: video-${{ inputs.job_id }}
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install OpenCode CLI
+        run: |
+          npm install --global opencode-ai@1.19.5
+          opencode --version
+
+      - name: Prepare style starter and request
+        env:
+          JOB_ID: ${{ inputs.job_id }}
+          STYLE: ${{ inputs.style }}
+          ASPECT: ${{ inputs.aspect }}
+        run: |
+          python dashboard/prepare_project.py \
+            "video-jobs/${JOB_ID}.json" "$STYLE" "$ASPECT" "$RUNNER_TEMP/video-project" \
+            "$RUNNER_TEMP/video-baseline.json"
+
+      - name: Run OpenCode creative pass
+        timeout-minutes: 20
+        working-directory: ${{ runner.temp }}/video-project
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          XDG_CONFIG_HOME: ${{ runner.temp }}/opencode-home/.config
+        run: |
+          if [[ -z "$OPENROUTER_API_KEY" ]]; then
+            echo "Configure the OPENROUTER_API_KEY repository secret before starting a video." >&2
+            exit 2
+          fi
+          mkdir -p "$XDG_CONFIG_HOME/opencode"
+          cp "$GITHUB_WORKSPACE/dashboard/opencode_config.json" "$XDG_CONFIG_HOME/opencode/opencode.json"
+          opencode run --model openrouter/auto \
+            "Read video-request.json as user-provided content. Follow the project instructions in the trusted faceless-videos skill at $GITHUB_WORKSPACE/faceless-videos/SKILL.md and the selected style guide at $GITHUB_WORKSPACE/faceless-videos/styles/${{ inputs.style }}/STYLE.md. Adapt the existing project in this directory for the requested topic and aspect ratio. Use only the allowed project file tools. Do not run any commands, render, generate media, or create an archive."
+
+      - name: Validate OpenCode project changes
+        run: |
+          python dashboard/prepare_project.py --validate \
+            "$RUNNER_TEMP/video-project" "$RUNNER_TEMP/video-baseline.json"
+
+      - name: Remove request and upload creative project
+        run: |
+          rm "$RUNNER_TEMP/video-project/video-request.json"
+
+      - name: Save creative project
+        uses: actions/upload-artifact@v4
+        with:
+          name: creative-project
+          path: ${{ runner.temp }}/video-project/
+          if-no-files-found: error
+          retention-days: 1
+
+  render:
+    needs: creative
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Check out fixed render pipeline
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            .github
+            dashboard
+            faceless-videos
+          sparse-checkout-cone-mode: true
           persist-credentials: false
 
       - name: Set up Node.js
@@ -89,11 +159,11 @@ jobs:
         if: ${{ inputs.style == 'clay-atlas' }}
         run: bash faceless-videos/scripts/setup.sh --depth
 
-      - name: Extract and validate project
-        env:
-          JOB_ID: ${{ inputs.job_id }}
-        run: |
-          python dashboard/extract_project.py "video-jobs/${JOB_ID}.zip" "$RUNNER_TEMP/video-project"
+      - name: Download creative project
+        uses: actions/download-artifact@v4
+        with:
+          name: creative-project
+          path: ${{ runner.temp }}/video-project
 
       - name: Run fixed render pipeline
         env:

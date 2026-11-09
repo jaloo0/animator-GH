@@ -1,8 +1,9 @@
 # Faceless Video Studio
 
-This repository keeps the existing [faceless-videos skill](./faceless-videos/) and adds an optional Streamlit
-dashboard backed by GitHub Actions. OpenCode handles one creative pass; a fixed Actions pipeline handles local
-voice generation, word timing, checks, rendering, and optional GoFile delivery.
+This repository keeps the existing [faceless-videos skill](./faceless-videos/) and adds an end-user Streamlit
+dashboard backed by GitHub Actions. Submit an idea or story in the dashboard; OpenCode runs with OpenRouter Auto
+remotely to create the project, then a fixed Actions pipeline handles voice generation, timing, checks, rendering,
+and optional GoFile delivery. No local terminal or project ZIP is required for the dashboard workflow.
 
 - [Full setup and walkthrough](./GITHUB-ACTIONS-GUIDE.md)
 - [Streamlit dashboard](./dashboard/app.py)
@@ -11,5 +12,5 @@ voice generation, word timing, checks, rendering, and optional GoFile delivery.
 The original skill scripts and examples remain available. The dashboard path is additive; running the skill manually
 continues to work as before.
 
-Important: the render repository must be **private**, and the public Streamlit URL is protected with an access code.
-The optional GoFile step makes a temporary public share link for the finished MP4.
+Setup requires the private repository to store an `OPENROUTER_API_KEY` GitHub Actions secret and Streamlit secrets
+for dashboard access and the GitHub API. The optional GoFile step makes a temporary public share link for the finished MP4.

@@ -5,19 +5,10 @@ import uuid
 
 import streamlit as st
 
+from constants import STYLE_OPTIONS
 from github_api import GitHubAPIError, GitHubClient
-from zip_validation import ProjectArchiveError, validate_project_zip
 
 st.set_page_config(page_title="Faceless Video Studio", page_icon="🎬", layout="wide")
-
-STYLES = {
-    "lamplit-ink": ("Lamplit Ink", ["9:16"]),
-    "red-ghost": ("Red Ghost", ["9:16", "16:9"]),
-    "sunlit-explainer": ("Sunlit Explainer", ["16:9", "9:16"]),
-    "stickman": ("Stickman", ["16:9", "9:16"]),
-    "clay-atlas": ("Clay Atlas", ["16:9"]),
-}
-
 
 def require_login() -> None:
     try:
@@ -62,33 +53,6 @@ def github_client() -> GitHubClient:
         raise exc
 
 
-def creative_prompt(style: str, aspect: str, mode: str, source: str) -> str:
-    label = STYLES[style][0]
-    request_type = "raw idea" if mode == "Raw idea" else "story/script"
-    return f"""Use the faceless-videos skill in this repository to make a complete project for the request below.
-
-Style: {label} ({style})
-Aspect ratio: {aspect}
-Input type: {request_type}
-
-User input:
-{source}
-
-Creative workflow:
-1. If this is a raw idea, develop one original, fact-checked concept and narration. If it is a story/script,
-   preserve its core events and improve only what is needed for narration and timing.
-2. Follow faceless-videos/SKILL.md and faceless-videos/styles/{style}/STYLE.md. Build from the matching example.
-3. Keep the existing renderer and its known command interface. Do not add external AI image/video API calls.
-   For Clay Atlas, reuse the supplied example stills unless I provide replacement images.
-4. Create all needed project files in a single folder and ensure the project is ready for the static render
-   pipeline: index.html, tools/capture.mjs, script file, shots, assets, and style-specific files.
-5. Do not run setup, self-tests, contact-sheet generation, or a full render. Those run later in GitHub Actions.
-6. Put the final project folder in a ZIP archive. Exclude node_modules, renders, review output, caches, and secrets.
-7. Before finishing, list the ZIP path and summarize the script, duration, and style-specific assets.
-
-Use the supplied story as user-owned input; do not copy another creator's script or shot list."""
-
-
 def cleanup_job_branch(client: GitHubClient, branch: str) -> None:
     try:
         client.delete_branch(branch)
@@ -99,7 +63,7 @@ def cleanup_job_branch(client: GitHubClient, branch: str) -> None:
     st.session_state.pop("video_run_id", None)
     st.session_state.pop("video_bytes", None)
     st.session_state.pop("gofile_link", None)
-    st.success("Temporary project branch deleted.")
+    st.success("Temporary request branch deleted.")
     st.rerun()
 
 
@@ -109,7 +73,7 @@ def show_job(client: GitHubClient) -> None:
         return
 
     st.divider()
-    st.subheader("Render job")
+    st.subheader("Video job")
     try:
         run = client.latest_run(job["branch"])
     except GitHubAPIError as exc:
@@ -126,9 +90,9 @@ def show_job(client: GitHubClient) -> None:
     st.write(f"**Status:** {status}" + (f" — {conclusion}" if conclusion else ""))
 
     if status != "completed":
-        st.info("The render runs on GitHub Actions. Refresh this page to update progress.")
+        st.info("OpenCode and the fixed render pipeline are running on GitHub Actions. Refresh to update progress.")
         return
-    if st.button("Delete uploaded project branch from GitHub", key="delete-project-branch"):
+    if st.button("Delete temporary request branch from GitHub", key="delete-project-branch"):
         cleanup_job_branch(client, job["branch"])
 
     if conclusion != "success":
@@ -165,16 +129,19 @@ def show_job(client: GitHubClient) -> None:
 
 require_login()
 st.title("Faceless Video Studio")
-st.caption("One OpenCode creative pass. A fixed GitHub Actions pipeline handles voice, timing, checks, render, and delivery.")
+st.caption("OpenCode with OpenRouter Auto creates the story and visuals; GitHub Actions handles voice, checks, rendering, and delivery.")
 
 client = github_client()
 with st.expander("How it works", expanded=False):
     st.markdown(
         """
-1. Use OpenCode for the creative work: write the script and adapt the chosen style's example project.
-2. Upload that complete project ZIP here. This dashboard does not send prompts to an AI model.
-3. GitHub Actions runs the fixed local pipeline with one Chrome worker, then stores the MP4 as an artifact.
-4. If enabled for the job, the action uploads a copy to GoFile and returns its temporary share link.
+1. Enter a raw idea or paste a story/script, then choose the style and render quality.
+2. GitHub Actions runs OpenCode with OpenRouter Auto to create the project from the included style example.
+3. A fixed local pipeline generates narration, timing, sound, checks the shots, and renders the video.
+4. Download the MP4 here. GoFile delivery is optional.
+
+OpenCode runs remotely; you do not need a terminal or a project ZIP. Factual AI-generated details may still need
+verification before publishing.
 """
     )
 
@@ -184,13 +151,14 @@ with st.form("video_request"):
         "Idea or story",
         height=140,
         placeholder="Describe the video idea or paste the story/script you want OpenCode to adapt.",
+        max_chars=16_384,
     )
     style = st.selectbox(
         "Visual style",
-        list(STYLES),
-        format_func=lambda key: STYLES[key][0],
+        list(STYLE_OPTIONS),
+        format_func=lambda key: STYLE_OPTIONS[key][0],
     )
-    aspect = st.selectbox("Aspect ratio", STYLES[style][1])
+    aspect = st.selectbox("Aspect ratio", STYLE_OPTIONS[style][1])
     quality = st.radio(
         "Render size",
         ["draft", "full"],
@@ -200,38 +168,26 @@ with st.form("video_request"):
         index=1,
         horizontal=True,
     )
-    project_zip = st.file_uploader(
-        "OpenCode project ZIP (max 50 MB)",
-        type=["zip"],
-        accept_multiple_files=False,
-    )
     gofile = st.checkbox(
         "Also upload the finished MP4 to GoFile and return a temporary share link",
         value=False,
         help="This explicitly sends the finished video to GoFile. Anyone with its link may access it.",
     )
-    submitted = st.form_submit_button("Start fixed render workflow", type="primary")
+    submitted = st.form_submit_button("Create and render video", type="primary")
 
 if submitted:
-    if source.strip():
-        prompt = creative_prompt(style, aspect, mode, source.strip())
-        st.subheader("OpenCode creative prompt")
-        st.caption("Run this prompt in OpenCode, create the project ZIP, then upload it above and start the workflow.")
-        st.code(prompt, language="text")
-    elif project_zip is None:
-        st.error("Enter an idea or story/script to create the OpenCode prompt.")
-
-    if project_zip is not None:
+    if not source.strip():
+        st.error("Enter an idea or story/script to start the video.")
+    else:
         started = False
         try:
-            archive_data = project_zip.getvalue()
-            validate_project_zip(archive_data)
             if client.has_active_render():
                 st.warning("A render is already queued or running in this repository. Wait for it to finish first.")
             else:
                 job_id = uuid.uuid4().hex
                 branch = client.start_render(
-                    project_zip=archive_data,
+                    source_text=source,
+                    source_type=mode,
                     job_id=job_id,
                     style=style,
                     aspect=aspect,
@@ -239,8 +195,6 @@ if submitted:
                     gofile=gofile,
                 )
                 started = True
-        except ProjectArchiveError as exc:
-            st.error(str(exc))
         except GitHubAPIError as exc:
             st.error(str(exc))
         else:
@@ -255,9 +209,7 @@ if submitted:
                 st.session_state.pop("video_run_id", None)
                 st.session_state.pop("video_bytes", None)
                 st.session_state.pop("gofile_link", None)
-                st.success("Workflow dispatched. This page does not run the render or open your local browser.")
-    elif source.strip():
-        st.info("After OpenCode creates the project ZIP, upload it here and submit again to start rendering.")
+                st.success("OpenCode and the video workflow have been dispatched to GitHub Actions.")
 
 if st.button("Refresh render status"):
     st.rerun()

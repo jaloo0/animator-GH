@@ -2,16 +2,21 @@ from __future__ import annotations
 
 import base64
 import io
+import json
 import re
 import zipfile
 from urllib.parse import quote
 
 import requests
 
+if __package__:
+    from .constants import MAX_SOURCE_BYTES, SOURCE_TYPES, STYLE_ASPECTS, STYLE_IDS
+else:
+    from constants import MAX_SOURCE_BYTES, SOURCE_TYPES, STYLE_ASPECTS, STYLE_IDS
+
 API_ROOT = "https://api.github.com"
 WORKFLOW_FILE = "render-video.yml"
 BRANCH_PATTERN = re.compile(r"^video-[a-f0-9]{32}$")
-STYLE_IDS = {"lamplit-ink", "red-ghost", "sunlit-explainer", "stickman", "clay-atlas"}
 
 
 class GitHubAPIError(RuntimeError):
@@ -52,7 +57,8 @@ class GitHubClient:
 
     def start_render(
         self,
-        project_zip: bytes,
+        source_text: str,
+        source_type: str,
         job_id: str,
         style: str,
         aspect: str,
@@ -61,15 +67,24 @@ class GitHubClient:
     ) -> str:
         if not re.fullmatch(r"[a-f0-9]{32}", job_id):
             raise GitHubAPIError("Invalid job identifier.")
-        if style not in STYLE_IDS or aspect not in {"9:16", "16:9"} or quality not in {"draft", "full"}:
+        if (
+            style not in STYLE_IDS
+            or aspect not in STYLE_ASPECTS[style]
+            or quality not in {"draft", "full"}
+            or not isinstance(source_type, str)
+            or source_type not in SOURCE_TYPES
+        ):
             raise GitHubAPIError("Invalid render options.")
-        if len(project_zip) > 50 * 1024 * 1024:
-            raise GitHubAPIError("Project ZIPs must be 50 MB or smaller.")
+        if not source_text.strip():
+            raise GitHubAPIError("Enter an idea or story/script.")
+        source_data = source_text.strip().encode("utf-8")
+        if len(source_data) > MAX_SOURCE_BYTES:
+            raise GitHubAPIError("Ideas and stories must be 16 KB or smaller.")
         branch = f"video-{job_id}"
         repository = self.repository()
         if repository.get("visibility") != "private":
             raise GitHubAPIError(
-                "The render repository must be private. Uploaded project ZIPs contain your work."
+                "The render repository must be private. Submitted ideas and stories are stored there temporarily."
             )
         default_branch = repository.get("default_branch")
         if not default_branch:
@@ -86,10 +101,15 @@ class GitHubClient:
         try:
             self._request(
                 "PUT",
-                f"/contents/video-jobs/{job_id}.zip",
+                f"/contents/video-jobs/{job_id}.json",
                 json={
-                    "message": f"Upload video project {job_id}",
-                    "content": base64.b64encode(project_zip).decode("ascii"),
+                    "message": f"Submit video request {job_id}",
+                    "content": base64.b64encode(
+                        json.dumps(
+                            {"source_type": source_type, "source_text": source_text.strip()},
+                            ensure_ascii=False,
+                        ).encode("utf-8")
+                    ).decode("ascii"),
                     "branch": branch,
                 },
             )
