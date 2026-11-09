@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 import hmac
+import sys
 import uuid
+from pathlib import Path
+
+REPOSITORY_ROOT = str(Path(__file__).resolve().parents[1])
+if REPOSITORY_ROOT not in sys.path:
+    sys.path.insert(0, REPOSITORY_ROOT)
 
 import streamlit as st
 
-from constants import STYLE_OPTIONS
-from github_api import GitHubAPIError, GitHubClient
+from dashboard.constants import STYLE_OPTIONS
+from dashboard.github_api import GitHubAPIError, GitHubClient
 
 st.set_page_config(page_title="Faceless Video Studio", page_icon="🎬", layout="wide")
 

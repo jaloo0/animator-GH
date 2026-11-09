@@ -49,8 +49,35 @@ class GitHubClient:
                 detail = response.json().get("message", response.text)
             except ValueError:
                 detail = response.text
+            if response.status_code == 404:
+                hint = self._not_found_hint(path)
+                raise GitHubAPIError(
+                    f"GitHub could not find or authorize {method} {path}. {hint}"
+                )
             raise GitHubAPIError(f"GitHub returned HTTP {response.status_code}: {detail}")
         return response
+
+    @staticmethod
+    def _not_found_hint(path: str) -> str:
+        if path == "":
+            return (
+                "Check github.owner and github.repo in Streamlit secrets, and confirm the fine-grained "
+                "token is active and has access to this private repository."
+            )
+        if path.startswith("/actions/workflows/"):
+            return (
+                "Confirm .github/workflows/render-video.yml exists on the repository's default branch, "
+                "has a workflow_dispatch trigger, and the token has Actions read/write permission."
+            )
+        if path.startswith("/git/ref/heads/"):
+            return "The configured repository default branch could not be found."
+        if path == "/git/refs":
+            return "The token must have Contents read/write permission on this private repository."
+        if path.startswith("/contents/"):
+            return "Confirm the temporary branch exists and the token has Contents read/write permission."
+        if path.startswith("/git/refs/heads/"):
+            return "The temporary branch may already have been deleted, or the token lacks Contents permission."
+        return "Check the configured repository and the fine-grained token's access and permissions."
 
     def repository(self) -> dict:
         return self._request("GET", "").json()
@@ -89,6 +116,14 @@ class GitHubClient:
         default_branch = repository.get("default_branch")
         if not default_branch:
             raise GitHubAPIError("Could not determine the repository's default branch.")
+
+        workflow = self._request(
+            "GET", f"/actions/workflows/{quote(WORKFLOW_FILE, safe='')}"
+        ).json()
+        if workflow.get("state") != "active":
+            raise GitHubAPIError(
+                f"The {WORKFLOW_FILE} workflow exists but is not active. Enable it in GitHub Actions settings."
+            )
 
         source_ref = self._request(
             "GET", f"/git/ref/heads/{quote(default_branch, safe='')}"

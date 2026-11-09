@@ -69,24 +69,26 @@ class GitHubDispatchTests(unittest.TestCase):
         self.assertEqual(client.session.headers["Authorization"], "Bearer token")
         repository = Mock()
         repository.json.return_value = {"visibility": "private", "default_branch": "main"}
+        workflow = Mock()
+        workflow.json.return_value = {"state": "active"}
         reference = Mock()
         reference.json.return_value = {"object": {"sha": "abc123"}}
         with patch.object(
             client,
             "_request",
-            side_effect=[repository, reference, Mock(), Mock(), Mock()],
+            side_effect=[repository, workflow, reference, Mock(), Mock(), Mock()],
         ) as request:
             branch = client.start_render(
                 "A short story", "Story/script", "a" * 32, "stickman", "9:16", "draft", True
             )
         self.assertEqual(branch, "video-" + "a" * 32)
-        self.assertEqual(request.call_count, 5)
+        self.assertEqual(request.call_count, 6)
         dispatch = request.call_args_list[-1].kwargs["json"]
         self.assertEqual(dispatch["inputs"]["style"], "stickman")
         self.assertEqual(dispatch["inputs"]["gofile"], "true")
         self.assertEqual(dispatch["ref"], branch)
         uploaded = json.loads(
-            base64.b64decode(request.call_args_list[3].kwargs["json"]["content"])
+            base64.b64decode(request.call_args_list[4].kwargs["json"]["content"])
         )
         self.assertEqual(uploaded, {"source_type": "Story/script", "source_text": "A short story"})
 
@@ -105,6 +107,8 @@ class GitHubDispatchTests(unittest.TestCase):
         client = GitHubClient("owner", "private-repo", "token")
         repository = Mock()
         repository.json.return_value = {"visibility": "private", "default_branch": "main"}
+        workflow = Mock()
+        workflow.json.return_value = {"state": "active"}
         reference = Mock()
         reference.json.return_value = {"object": {"sha": "abc123"}}
         with patch.object(
@@ -112,6 +116,7 @@ class GitHubDispatchTests(unittest.TestCase):
             "_request",
             side_effect=[
                 repository,
+                workflow,
                 reference,
                 Mock(),
                 Mock(),
@@ -127,6 +132,21 @@ class GitHubDispatchTests(unittest.TestCase):
             request.call_args_list[-1].args[:2],
             ("DELETE", "/git/refs/heads/video-" + "b" * 32),
         )
+
+    def test_reports_missing_workflow_before_creating_temporary_branch(self):
+        client = GitHubClient("owner", "private-repo", "token")
+        repository = Mock()
+        repository.json.return_value = {"visibility": "private", "default_branch": "main"}
+        not_found = Mock()
+        not_found.ok = False
+        not_found.status_code = 404
+        not_found.json.return_value = {"message": "Not Found"}
+        with patch.object(client.session, "request", side_effect=[repository, not_found]) as request:
+            with self.assertRaisesRegex(GitHubAPIError, "default branch"):
+                client.start_render(
+                    "A story", "Story/script", "d" * 32, "stickman", "9:16", "draft", False
+                )
+        self.assertEqual(request.call_count, 2)
 
     def test_rejects_unsupported_aspect_and_oversized_source(self):
         client = GitHubClient("owner", "private-repo", "token")
