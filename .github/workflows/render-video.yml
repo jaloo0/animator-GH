@@ -22,8 +22,8 @@ on:
         required: true
         type: choice
         options:
-          - 9:16
-          - 16:9
+          - "9:16"
+          - "16:9"
       quality:
         description: Render profile
         required: true

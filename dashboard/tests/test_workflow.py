@@ -63,6 +63,15 @@ class OpenCodeConfigTests(unittest.TestCase):
             self.assertTrue(allowed.isdisjoint({"shell", "webfetch", "websearch", "subagent"}))
 
 
+class WorkflowDispatchConfigTests(unittest.TestCase):
+    def test_aspect_choice_values_are_quoted_strings(self):
+        workflow = (
+            Path(__file__).resolve().parents[2] / ".github/workflows/render-video.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn('          - "9:16"', workflow)
+        self.assertIn('          - "16:9"', workflow)
+
+
 class GitHubDispatchTests(unittest.TestCase):
     def test_dispatches_allowlisted_options_and_stores_request(self):
         client = GitHubClient("owner", "private-repo", "token")
